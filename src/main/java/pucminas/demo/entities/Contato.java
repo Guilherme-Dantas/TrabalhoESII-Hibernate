@@ -5,24 +5,27 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name="CONTATOS_755952_734661")
+@Table(name = "CONTATOS_755952_734661")
 public class Contato implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(name="codigo")
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @Column(name = "codigo")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name="nome")
+    @Column(name = "nome")
     private String Nome;
 
-    @Column(name="endereco")
+    @Column(name = "endereco")
     private String Endereco;
 
-    @Column(name="telefone")
+    @Column(name = "telefone")
     private String Telefone;
+
+    public Contato() {
+    }
 
     public Contato(String nome, String endereco, String telefone) {
         Nome = nome;

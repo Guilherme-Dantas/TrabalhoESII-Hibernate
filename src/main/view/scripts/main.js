@@ -53,22 +53,27 @@ function toggle_form(id, nome, end, tel) {
     }
     
     var form = `
-            <h3>${titulo}</h3>
+            <h2>${titulo}</h2>
             <form>  
-            <label for="nome">Nome: </label>
-                    <input type="text" id="nome" name="nome" value="${nome}" placeholder="nome do contato"> <br>  
-            <label for="telefone">Telefone: </label>
-                    <input type="tel" id="telefone" name="telefone" value="${tel}" placeholder="número do contato"> <br>  
-            <label for="endereco">Endereço: </label>  
-                    <input type="text" id="endereco" name="endereco" value="${end}" placeholder="endereço do contato"> <br> 
+            <label for="nome-input" id="nome-label">Nome: </label>
+                    <input type="text" id="nome-input" name="nome" value="${nome}" placeholder="nome do contato"> <br>  
+            <label for="telefone-input" id="telefone-label">Telefone: </label>
+                    <input type="tel" id="telefone-input" name="telefone" value="${tel}" placeholder="número do contato"> <br>  
+            <label for="endereco-input" id="endereco-label">Endereço: </label>  
+                    <input type="text" id="endereco-input" name="endereco" value="${end}" placeholder="endereço do contato"> <br> 
             </form>
-            <button id="submit-btn" onclick="submit(${id})">
-                Enviar
-            </button> `
+            <div id="div-btn-submit">
+                <button id="submit-btn" onclick="submit(${id})">
+                    Enviar
+                </button>
+            </div>`
 
     if (div.innerHTML == "" || div.innerHTML != form) {
+        
+        div.style.backgroundColor = "#7c349256";
         div.innerHTML = form
     } else {
+        div.style.backgroundColor = "";
         div.innerHTML = ""
     }
 }
@@ -76,16 +81,16 @@ function toggle_form(id, nome, end, tel) {
 function submit(id){
     let req = new XMLHttpRequest();
     let url = "http://localhost:8080/api/contato";
+    
+    if(id != undefined && Number.isInteger(id) ){
+        url += "/" + id;
+    }
+    
     req.open("POST", url, true);
     req.setRequestHeader('Content-Type', 'application/json');
-
-    if(id != undefined && Number.isInteger(id) ){
-        url += id;
-    }
-
-    let nomeValue = document.getElementById("nome").value;
-    let telefoneValue = document.getElementById("telefone").value;
-    let enderecoValue = document.getElementById("endereco").value;
+    let nomeValue = document.getElementById("nome-input").value;
+    let telefoneValue = document.getElementById("telefone-input").value;
+    let enderecoValue = document.getElementById("endereco-input").value;
 
     req.send(JSON.stringify({
         nome: nomeValue,

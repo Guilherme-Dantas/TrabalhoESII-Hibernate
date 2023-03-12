@@ -75,23 +75,23 @@ function toggle_form(id, nome, end, tel) {
 
 function submit(id){
     let req = new XMLHttpRequest();
-    let url = "http://localhost:8080/api/contato/";
+    let url = "http://localhost:8080/api/contato";
+    req.open("POST", url, true);
+    req.setRequestHeader('Content-Type', 'application/json');
+
     if(id != undefined && Number.isInteger(id) ){
         url += id;
     }
-    let nome = document.getElementById("nome").value;
-    let telefone = document.getElementById("telefone").value;
-    let endereco = document.getElementById("endereco").value;
-    let json = {
-        nome: `${nome}`,
-        endereco: `${endereco}`,
-        telefone: `${telefone}`
-    }
-    
-    console.log(json);
-    req.open('POST', url, true);
-    req.setRequestHeader('Content-Type', 'application/json');
-    req.send(json);
+
+    let nomeValue = document.getElementById("nome").value;
+    let telefoneValue = document.getElementById("telefone").value;
+    let enderecoValue = document.getElementById("endereco").value;
+
+    req.send(JSON.stringify({
+        nome: nomeValue,
+        endereco: enderecoValue,
+        telefone: telefoneValue
+    }))
 
     req.onreadystatechange = function () {
         if (req.readyState == 4) {

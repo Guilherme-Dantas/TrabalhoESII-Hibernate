@@ -11,6 +11,7 @@ import pucminas.demo.services.ContatoService;
 
 import java.util.List;
 
+@CrossOrigin
 @Controller
 @RequestMapping("/api/contato")
 public class ContatoController {
@@ -30,6 +31,7 @@ public class ContatoController {
         }
     }
 
+
     @GetMapping("/{id}")
     public ResponseEntity<Object> getContatoById(@PathVariable("id") int id){
         try{
@@ -46,6 +48,7 @@ public class ContatoController {
         }
     }
 
+
     @PostMapping
     public ResponseEntity<Object> createContato(@RequestBody ContatoDTO contatoDTO){
         try{
@@ -57,6 +60,7 @@ public class ContatoController {
             return responseEntity;
         }
     }
+
 
     @PostMapping("/{id}")
     public ResponseEntity<Object> updateContato(@PathVariable("id") int id, @RequestBody ContatoDTO contatoDTO){

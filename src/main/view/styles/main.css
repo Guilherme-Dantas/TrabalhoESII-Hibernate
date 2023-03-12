@@ -1,0 +1,63 @@
+* {
+    font-family: "Lucida Console", Courier, monospace;
+    color: rgb(240, 234, 226);
+    font-family: 'Nova Flat';
+}
+
+#main {
+    padding-top: 50px;
+    background-color: #818cbd;
+    /* background: url("../images/back.png") no-repeat center center fixed; */
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 1000px;
+    
+}
+
+#icon-tg-btn {
+    width: 25px;
+    transform: rotate(45deg);
+}
+
+#icon-btn {
+    width: 25px;
+}
+
+#tg-btn, #del-btn, #edit-btn, #submit-btn {
+    border-radius: 100px;
+    padding: 10px;
+    background-color: #463b85;
+    border: none;
+    /* cursor: pointer !important; */
+}
+
+#tg-btn:active{
+    background-color: #463b85a2;
+}
+
+#div-table{
+    padding: 10px;
+}
+
+table {
+    background-color: #7c349256;
+    border-radius: 1em;
+}
+
+td {
+
+    border-top: 3px solid  #818cbd !important;
+}
+
+#tb-col{
+    border-right: 3px solid  #818cbd !important;
+
+}
+
+th,
+td {
+    padding: 1em;
+    text-align: left;
+}
